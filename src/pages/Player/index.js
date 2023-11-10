@@ -1,13 +1,21 @@
-import { useParams } from "react-router-dom";
-import Banner from "../../components/Banner";
-import Titulo from "../../components/Titulo";
-import styles from "./Player.module.css";
-import videos from '../../json/db.json';
-import NotFound from "../NotFound";
+import { useParams } from "react-router-dom"
+import Banner from "../../components/Banner"
+import Titulo from "../../components/Titulo"
+import styles from "./Player.module.css"
+import NotFound from "../NotFound"
+import { useEffect, useState } from "react"
 
 function Player() {
 
-    const parametros = useParams();
+    const [videos, setVideos] = useState([])
+
+    useEffect(() => {
+        fetch("https://my-json-server.typicode.com/yapeansa/cinetag-api/videos")
+        .then(resposta => resposta.json())
+        .then(dados => setVideos(dados))
+    }, [])
+
+    const parametros = useParams()
     const video = videos.filter(video => video.id === Number(parametros.id))
 
     if (!video[0]) {
@@ -30,7 +38,7 @@ function Player() {
                     ></iframe>
             </section>
         </>
-    );
+    )
 }
 
-export default Player;
+export default Player

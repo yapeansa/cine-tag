@@ -12,7 +12,7 @@ function Inicio() {
         fetch("https://my-json-server.typicode.com/yapeansa/cinetag-api/videos")
             .then(resposta => resposta.json())
             .then(dados => setVideos(dados))
-    }, [videos])
+    }, [])
 
     return (
         <>

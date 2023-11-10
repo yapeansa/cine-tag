@@ -1,9 +1,9 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Inicio from "./pages/Inicio";
-import Favoritos from "./pages/Favoritos";
-import PaginaPrincipal from "./components/PaginaPrincipal";
-import Player from "./pages/Player";
-import NotFound from "./pages/NotFound";
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Inicio from "./pages/Inicio"
+import Favoritos from "./pages/Favoritos"
+import PaginaPrincipal from "./components/PaginaPrincipal"
+import Player from "./pages/Player"
+import NotFound from "./pages/NotFound"
 
 function AppRoutes() {
     return (
@@ -17,7 +17,7 @@ function AppRoutes() {
                         </Route>
                     </Routes>
         </BrowserRouter>
-    );
+    )
 }
 
-export default AppRoutes;
+export default AppRoutes
