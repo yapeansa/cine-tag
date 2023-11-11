@@ -7,18 +7,17 @@ import { useEffect, useState } from "react"
 
 function Player() {
 
-    const [videos, setVideos] = useState([])
+    const [video, setVideo] = useState({})
+    const parametros = useParams()
 
     useEffect(() => {
-        fetch("https://my-json-server.typicode.com/yapeansa/cinetag-api/videos")
+        fetch(`https://my-json-server.typicode.com/yapeansa/cinetag-api/videos?id=${parametros.id}`)
         .then(resposta => resposta.json())
-        .then(dados => setVideos(dados))
+        .then(dados => setVideo(...dados))
     }, [])
 
-    const parametros = useParams()
-    const video = videos.filter(video => video.id === Number(parametros.id))
 
-    if (!video[0]) {
+    if (!video) {
         return <NotFound />
     }
 
@@ -31,8 +30,8 @@ function Player() {
             <section className={styles.container}>
                 <iframe
                     width="100%"
-                    src={video[0].link}
-                    title={video[0].titulo}
+                    src={video.link}
+                    title={video.titulo}
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     ></iframe>
